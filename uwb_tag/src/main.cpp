@@ -15,7 +15,7 @@ char tag_addr[] = "7D:00:22:EA:82:60:3B:9C";
 
 int count = 0;
 double dis[3] = {0};
-double check_dis;
+double dis_val;
 double x1 = 0.0, yx = 0.0; // 132
 double x2 = 0.0, y2 = 0.4; // 133
 double x3 = 1.0, y3 = 0.0; // 134
@@ -69,26 +69,26 @@ void newRange()
   //  Serial1.print(",");
   //  Serial1.println(DW1000Ranging.getDistantDevice()->getRange());
   addr = DW1000Ranging.getDistantDevice()->getShortAddress();
-  check_dis = DW1000Ranging.getDistantDevice()->getRange();
-  if (check_dis > 0.0 && check_dis < 20.0)
+  dis_val = DW1000Ranging.getDistantDevice()->getRange();
+  if (dis_val > 0.0 && dis_val < 20.0)
   {
     if (addr == 132)
     {
-      dis[0] = DW1000Ranging.getDistantDevice()->getRange();
+      dis[0] = dis_val;
       Serial1.print("device 132: ");
       Serial1.println(dis[0]);
       a1 = true;
     }
     if (addr == 133)
     {
-      dis[1] = DW1000Ranging.getDistantDevice()->getRange();
+      dis[1] = dis_val;
       Serial1.print("device 133: ");
       Serial1.println(dis[1]);
       a2 = true;
     }
     if (addr == 134)
     {
-      dis[2] = DW1000Ranging.getDistantDevice()->getRange();
+      dis[2] = dis_val;
       Serial1.print("device 134: ");
       Serial1.println(dis[2]);
       a3 = true;
